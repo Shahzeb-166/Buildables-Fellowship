@@ -142,3 +142,5 @@ The most useful new concept for me was window functions (ROW_NUMBER, RANK, SUM O
 
 The hardest part was designing queries that required partitioning, such as top 2 customers by spending in each category or cumulative spend per customer. These required careful use of CTEs and window functions. However, once I understood the logic, they became powerful tools for answering complex business questions.
 */
+-- Submission branch update
+
