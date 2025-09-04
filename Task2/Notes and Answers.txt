@@ -1,0 +1,35 @@
+Database vs Data Warehouse vs Data Lake:
+- Database: 
+Stores structured, current operational data and is optimized for transactions.
+Focus is on consistency, speed, and supporting applications like e-commerce or banking.
+- Data Warehouse: 
+Stores cleaned, historical, and integrated data from multiple systems, optimized for analytics.
+Uses schemas, surrogate keys, and aggregations to support reporting, dashboards, and business intelligence.
+- Data Lake: 
+Stores raw data in any format (structured, semi-structured, unstructured). 
+It is schema-on-read, meaning structure is applied only when queried.
+It can handle logs, images, IoT streams, and is often used for big data, machine learning, and exploratory analytics.
+In short:
+Databases handle day-to-day operations,
+Data Warehouses provide a structured environment for business insights,
+Data Lakes capture everything in its raw form for future exploration.
+
+Difference between OLTP and OLAP modeling:
+OLTP (Online Transaction Processing) systems are optimized for day-to-day transactions such as insert, update, and delete operations.
+They are highly normalized to reduce redundancy and ensure fast transaction processing.
+OLAP (Online Analytical Processing) systems, on the other hand, are optimized for analytical queries and reporting.
+They use denormalized schemas like star or snowflake to simplify aggregations and speed up complex joins.
+In practice, OLTP keeps the business running in real time, while OLAP helps management analyze long-term trends and make decisions.
+
+Importance of surrogate keys:
+Surrogate keys (like customer_sk, product_sk) are system-generated and provide a stable, unique identifier for each record, even if the underlying business keys (like customer_id, product_id) change or get reused.
+They decouple the warehouse from source system changes and ensure consistent joins across fact and dimension tables.
+This becomes especially important when tracking history, maintaining data integrity across multiple sources, or when natural keys are not reliable.
+
+What I learned about Slowly Changing Dimensions:
+SCD Type-2 lets us preserve historical changes instead of overwriting them.
+When an attribute like a customer’s email changes, the old record is closed with an end_date and marked inactive, while a new record is inserted with a new surrogate key.
+This ensures we can always reconstruct the state of the customer at any point in time.
+I also learned that SCD Type-2 is the most common approach in data warehouses because it balances accuracy, traceability, and simplicity.
+
+
